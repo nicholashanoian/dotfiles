@@ -1,8 +1,8 @@
-#+TITLE: Manjaro i3 Setup
+#+TITLE: Manjaro KDE Setup
 
 * About
 
-This repository is used to set up Manjaro i3 to my liking. Thanks to [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/][Nicola Paolucci]] for the helpful article.
+This repository is used to set up Manjaro KDE to my liking. Thanks to [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/][Nicola Paolucci]] for the helpful article.
 
 * Installation
 
