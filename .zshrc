@@ -107,14 +107,6 @@ export VISUAL="emacsclient -c -a emacs"
 export PATH=$PATH:/home/nick/.local/bin
 
 
-# trellowarrior
-
-export TRELLO_API_KEY="c3782fdca420ae0bc1a3f8c7efd53aff"
-export TRELLO_API_SECRET="b7b38d9197941044af36bf99d0ffc1f35b34883d2744534882de8d6f75826d64"
-export TRELLO_NAME="TrelloWarrior"
-export TRELLO_EXPIRATION="never"
-
-
 # virtualenvwrapper
 export WORKON_HOME=~/.venvs
 
@@ -126,6 +118,3 @@ alias config="/usr/bin/git --git-dir=$HOME/nhh-kde/ --work-tree=$HOME"
 alias R="R --quiet --no-save"
 
 alias open=xdg-open
-
-
-#comment

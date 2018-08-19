@@ -28,26 +28,7 @@ IconSize=16
 ToolButtonStyle=IconOnly
 
 [Recent Files]
-File1[$e]=$HOME/.conky/conky-draw/samples/graduated_ring.png
-File10[$e]=$HOME/Dropbox/he-giveth-2.png
-File2[$e]=$HOME/.conky/conky-draw/samples/sample3.png
-File3[$e]=$HOME/.conky/conky-draw/samples/ellipse.png
-File4[$e]=$HOME/.conky/conky-draw/samples/sample5.png
-File5[$e]=$HOME/.conky/conky-draw/samples/sample4.png
-File6[$e]=$HOME/.conky/conky-draw/samples/sample2.png
-File7[$e]=$HOME/.conky/conky-draw/samples/sample1.png
-File8[$e]=$HOME/Downloads/graph/capture.png
-File9[$e]=$HOME/Dropbox/he-giveth-1.png
-Name1[$e]=graduated_ring.png
-Name10[$e]=he-giveth-2.png
-Name2[$e]=sample3.png
-Name3[$e]=ellipse.png
-Name4[$e]=sample5.png
-Name5[$e]=sample4.png
-Name6[$e]=sample2.png
-Name7[$e]=sample1.png
-Name8[$e]=capture.png
-Name9[$e]=he-giveth-1.png
+
 
 [SideBar]
 IsVisible ViewMode=false
