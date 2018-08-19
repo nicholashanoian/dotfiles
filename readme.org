@@ -1,0 +1,176 @@
+#+TITLE: Manjaro i3 Setup
+
+* About
+
+This repository is used to set up Manjaro i3 to my liking. Thanks to [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/][Nicola Paolucci]] for the helpful article.
+
+* Installation
+
+To install:
+
+#+BEGIN_SRC sh
+curl -Lks bit.do/nhh-cfg | /bin/bash
+#+END_SRC
+
+This will clone the bare repository to =~/.nhh-config= and copy the relevant configuration files to the home directory. It will also copy a few useful scripts to the =~/nhh-install= directory. Use the following scripts to install the packages and programs that I use most frequently.
+
+- =pacman.sh= :: Installs standard packages
+- =yaourt.sh= :: Installs aur packages
+- =oh-my-zsh.sh= :: Installs =oh-my-zsh=
+- =venv.sh= :: Installs =virtualenvwrapper= and creates a new virtual environment called =py3=
+- =install_pulse= :: Installs pulse audio
+
+* Help
+** Dual-Booting
+Special thanks to [[http://www.rodsbooks.com/efi-bootloaders/index.html][Rod Smith]] for his extremely useful website on managing EFI boot loaders.
+
+When dual-booting with Windows, use a live Linux USB to create a partition formatted with NTFS for the Windows installation. Then, proceed to install windows on said partition. This will also create an EFI partition that is typically 100 MB. Once Windows is installed, install Linux on the remainder of the disk. There should be a sizable swap partition (typically 1.5x the size of your RAM). The rest should be the root partition formatted with ext4. Before you start, be sure to disable Secure Boot in the BIOS.
+
+If Windows was not installed first, or you are not dual-booting, you need to create a boot partition. It should be the first partition on the disk, formatted with VFAT, around 100-200 MB in size, flagged with =boot= and =esp=, and should be mounted on =/boot/efi/=.
+
+*** Mounting Windows' Boot Partition
+If Windows was installed first and you are dual-booting, you need to mount the EFI partition that Windows created. We want to permanently mount this partition to =/boot/efi=, so we need to edit =/etc/fstab=. Use =fdisk -l= as root to find the Windows boot partition. It will typically show a type of =EFI System= and have a size of 100MB. Now edit =/etc/fstab= to properly mount everything on boot. See the example below.
+
+**** Example Output of =sudo fdisk -l=
+
+#+BEGIN_EXAMPLE
+Disk /dev/nvme0n1: 238.5 GiB, 256060514304 bytes, 500118192 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier:
+
+Device             Start       End   Sectors   Size Type
+/dev/nvme0n1p1      2048 146804735 146802688    70G Microsoft basic data
+/dev/nvme0n1p2 146804736 147826687   1021952   499M Windows recovery environment
+/dev/nvme0n1p3 147826688 148031487    204800   100M EFI System
+/dev/nvme0n1p4 148031488 148064255     32768    16M Microsoft reserved
+/dev/nvme0n1p5 148064256 173230079  25165824    12G Linux swap
+/dev/nvme0n1p6 173230080 500118158 326888079 155.9G Linux filesystem
+#+END_EXAMPLE
+
+**** Example =/etc/fstab=
+
+#+BEGIN_EXAMPLE
+  # <device>        <dir>        <type>        <options>                  <dump> <fsck>
+  /dev/nvme0n1p6    /            ext4          defaults,noatime           0      1
+  /dev/nvme0n1p5    none         swap          defaults,noatime,discard   0      0
+  /dev/nvme0n1p3    /boot/efi    vfat          defaults,noatime,discard   0      2
+  tmpfs             /tmp         tmpfs         defaults,noatime,mode=1777 0      0
+#+END_EXAMPLE
+
+*** Installing the Boot Loader
+Now, we need to add our boot loader, in this case grub, to the EFI partition. This can be done with the =grub-install= command.
+
+#+BEGIN_SRC sh
+sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+#+END_SRC
+
+This installs 64-bit grub (from the target flag) in the directory =/boot/efi= with the ID of =GRUB=. Next, create a default configuration for grub.
+
+#+BEGIN_SRC sh
+sudo grub-mkconfig -o /boot/efi/EFI/grub/grub.cfg
+#+END_SRC
+
+If you are using a boot loader other than grub, simply copy the files to a sub-directory of =/boot/efi/EFI=.
+
+*** Registering the Boot Loader with the EFI
+
+Finally, we need to make EFI recognize the boot loader. Use the =efibootmgr= utility to do so.
+
+#+BEGIN_SRC sh
+sudo efibootmgr -c -d /dev/nvme0n1p3 -l \\EFI\\Grub\\grubx64.efi -L Grub
+#+END_SRC
+
+However, sometimes this does not properly add the boot loader. With Windows, use [[https://www.easyuefi.com/index-us.html][EasyUEFI]] to add the entry. Simply create a new entry and set the source to be the =grubx64.efi= file. Now you should be able to boot into the BIOS and Grub should be a valid boot option. Change the boot order to have grub at the top and you should be good to go.
+
+*** Additional Resources
+- [[https://wiki.archlinux.org/index.php/GRUB][Arch Linux Wiki - Grub]]
+- [[http://www.rodsbooks.com/efi-bootloaders/installation.html][Rod Smith - General EFI Reference]]
+
+** Fonts
+Edit =.config/fontconfig/fonts.conf=
+** Mathematica
+*** Registration
+#+BEGIN_SRC sh
+math
+#+END_SRC
+*** Startup Issues
+[[https://forums.gentoo.org/viewtopic-p-8198000.html?sid=ab27c1ca8e1927691858595185e18284]]
+*** Fix magnification
+#+BEGIN_SRC
+SetOptions[$FrontEnd, Magnification -> 1.25]
+#+END_SRC
+** Org
+- Plain timestamp :: shows up until date, does not persist whether TODO or not
+- Scheduled :: persists past due date whether todo or no todo state
+- Deadline :: persists past due date whether todo or no todo state
+** Pacman
+- Remove orphan packages by using =pacman -Rns $(pacman -Qtdq)=.
+** Pass
+*** Create a new key
+#+BEGIN_SRC sh
+gpg --full-gen-key
+#+END_SRC
+- Choose defaults and set to never expire.
+- Full Name: =John Doe=
+- Email: =johndoe@test.com=
+- For help see [[https://www.gnupg.org/gph/en/manual.html]].
+*** Transfer keys to another computer
+- First, from a computer where the keys are already located:
+#+BEGIN_SRC sh
+gpg --export-secret-keys -a <keyid> > private.asc
+gpg --export -a <keyid> > public.asc
+#+END_SRC
+- Copy these two files to a flash drive and copy them onto the new computer. Then you need to import them and trust them:
+#+BEGIN_SRC sh
+gpg --import private.asc
+gpg --import public.asc
+gpg --edit-key 'Nicholas Hanoian <nicholashanoian@gmail.com>'
+trust
+5
+y
+#+END_SRC
+- Press =C-d= to finish.
+**** Additional steps for Windows
+- Install [[https://github.com/Baggykiin/pass-winmenu][pass-winmenu]] (you want pass-winmenu-nogpg).
+- Install [[https://gnupg.org/download/index.html][gpg]] (you want normal gpg not gpg4win. this should be the second item down under "Windows").
+- =ssh-keygen= and add to [[gitlab.com]].
+- Clone password repository into =C:\Users\<username>\.password-store=.
+- =C-M-p= to launch =pass-winmenu=.
+- =C-M-P= to auto-fill when in a browser.
+*** Storing new passwords
+#+BEGIN_SRC sh
+pass generate <newwebsite>
+pass edit <newwebsite>
+#+END_SRC
+- This should open up the password file in an editor. Add a new line: =username: <theusername>=.
+- You can add a number at the end of =pass generate= to specify the length of the password.
+- You can generate passwords with only letters and numbers by passing the =-n= flag to the end of the password.
+- For example, =pass generate test.com 16 -n= would create a new password for test.com which is 16 characters long and is comprised of only letters and numbers.
+- You can also use =pass insert <newwebsite>= to set the password manually.
+- You can add a =-m= flag to allow for multiple lines when using =pass insert=.
+*** Retrieve passwords
+- The following command will display the password in the terminal. You can add the =-c= flag to copy to the clipboard.
+#+BEGIN_SRC sh
+pass <nameofwebsite>
+#+END_SRC
+** Python
+*** Virtual Environments
+**** Setup
+- Install =virtualenvwrapper=, a wrapper to =virtualenv= which adds some useful commands to make it easy to work on different python environments.
+#+BEGIN_SRC sh
+  sudo pip install virtualenvwrapper
+#+END_SRC
+- Add these lines to =.zshrc= to load =virtualenvwrapper= when booting up.
+#+BEGIN_SRC sh
+export WORKON_HOME=~/.venvs
+source /usr/bin/virtualenvwrapper.sh
+#+END_SRC
+**** Usage
+- Environments are stored in =~/.venvs=.
+- To activate an environment: ex: =workon py3=.
+- To make an environment: =mkvirtualenv py3=.
+- To deactivate an environment: =deactivate=.
+
