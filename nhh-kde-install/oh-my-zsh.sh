@@ -1,2 +1,2 @@
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git --git-dir=$HOME/nhh-kde/ --work-tree=$HOME checkout -- ~/.zshrc
+git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+chsh -s $(grep /zsh$ /etc/shells | tail -1)

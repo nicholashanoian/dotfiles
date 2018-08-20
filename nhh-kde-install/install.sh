@@ -4,3 +4,4 @@ function config {
 }
 config checkout -f master
 config config status.showUntrackedFiles no
+~/nhh-kde-install/oh-my-zsh.sh 
