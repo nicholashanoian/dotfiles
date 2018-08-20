@@ -102,13 +102,13 @@ math
 #+BEGIN_SRC
 SetOptions[$FrontEnd, Magnification -> 1.25]
 #+END_SRC
-** Org
+** Org Mode Notes
 - Plain timestamp :: shows up until date, does not persist whether TODO or not
 - Scheduled :: persists past due date whether todo or no todo state
 - Deadline :: persists past due date whether todo or no todo state
 ** Pacman
 - Remove orphan packages by using =pacman -Rns $(pacman -Qtdq)=.
-** Pass
+** Pass and GPG
 *** Create a new key
 #+BEGIN_SRC sh
 gpg --full-gen-key
@@ -126,7 +126,6 @@ gpg --export -a <keyid> > public.asc
 - Copy these two files to a flash drive and copy them onto the new computer. Then you need to import them and trust them:
 #+BEGIN_SRC sh
 gpg --import private.asc
-gpg --import public.asc
 gpg --edit-key 'Nicholas Hanoian <nicholashanoian@gmail.com>'
 trust
 5
