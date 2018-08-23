@@ -56,7 +56,7 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][1][Applets][4][Configuration][General]
-launchers=file:///usr/share/applications/org.kde.dolphin.desktop?wmClass=dolphin,applications:chromium.desktop,applications:org.kde.konsole.desktop,applications:emacs.desktop,applications:systemsettings.desktop,applications:firefox.desktop
+launchers=file:///usr/share/applications/org.kde.dolphin.desktop?wmClass=dolphin,applications:chromium.desktop,applications:org.kde.konsole.desktop,applications:emacs.desktop,applications:systemsettings.desktop
 middleClickAction=NewInstance
 wheelEnabled=false
 
@@ -91,7 +91,7 @@ immutability=1
 plugin=org.kde.plasma.eventcalendar
 
 [Containments][1][Applets][71][Configuration]
-PreloadWeight=97
+PreloadWeight=100
 
 [Containments][1][Applets][71][Configuration][ConfigDialog]
 DialogHeight=779
