@@ -89,8 +89,13 @@ ForegroundPositive=52,152,219
 ForegroundVisited=145,61,136
 
 [General]
-ColorScheme=Breath
+BrowserApplication[$e]=chromium.desktop
+ColorScheme=Default
 Name=Breath
+XftAntialias=true
+XftHintStyle=
+XftSubPixel=none
+dbfile=/home/nick/.mozilla/firefox/yvss9p3b.default/places.sqlite
 font=Noto Sans,10,-1,5,50,0,0,0,0,0
 menuFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 shadeSortColumn=true

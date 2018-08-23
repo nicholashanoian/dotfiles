@@ -115,6 +115,12 @@ if [ -f /usr/bin/virtualenvwrapper.sh ]; then
 fi
 
 alias config="/usr/bin/git --git-dir=$HOME/nhh-kde/ --work-tree=$HOME"
+
+# adds completion for config alias
+setopt complete_aliases
+
+
 alias R="R --quiet --no-save"
 
 alias open=xdg-open
+
