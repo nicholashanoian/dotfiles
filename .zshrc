@@ -114,7 +114,7 @@ if [ -f /usr/bin/virtualenvwrapper.sh ]; then
 	source /usr/bin/virtualenvwrapper.sh
 fi
 
-alias config="/usr/bin/git --git-dir=$HOME/nhh-config-repo/ --work-tree=$HOME"
+alias config="/usr/bin/git --git-dir=$HOME/setup-repo/ --work-tree=$HOME"
 
 # adds completion for config alias
 setopt complete_aliases
