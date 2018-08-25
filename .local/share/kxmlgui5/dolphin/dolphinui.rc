@@ -69,6 +69,7 @@
   </Menu>
   <Separator weakSeparator="1"/>
   <Separator weakSeparator="1"/>
+  <Separator weakSeparator="1"/>
   <Menu alreadyVisited="1" noMerge="1" name="tools">
    <text translationDomain="kxmlgui5">&amp;Tools</text>
    <Action name="show_filter_bar"/>
@@ -118,7 +119,6 @@
   <Action name="split_stash"/>
   <Action name="show_hidden_files"/>
   <Action name="show_terminal_panel"/>
-  <Action name="help_whats_this"/>
  </ToolBar>
  <State name="new_file">
   <disable>
