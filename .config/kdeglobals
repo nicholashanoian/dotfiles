@@ -147,6 +147,12 @@ listViewIconSize=0
 [KShortcutsDialog Settings]
 Dialog Size=600,480
 
+[Shortcuts]
+BackwardWord=Ctrl+Left;\s
+BeginningOfLine=Home;\s
+EndOfLine=End;\s
+ForwardWord=Ctrl+Right;\s
+
 [WM]
 activeBackground=71,80,87
 activeBlend=255,255,255

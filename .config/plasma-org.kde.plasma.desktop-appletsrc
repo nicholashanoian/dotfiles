@@ -24,11 +24,16 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][1][Applets][2][Configuration]
-PreloadWeight=97
+PreloadWeight=92
+
+[Containments][1][Applets][2][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][1][Applets][2][Configuration][General]
 favorites=firefox.desktop,qupzilla.desktop,org.kde.dolphin.desktop,org.kde.konversation.desktop,libreoffice-writer.desktop,cantata.desktop,kde4-digikam.desktop,org.kde.konsole.desktop,octopi.desktop,systemsettings.desktop
 favoritesPortedToKAstats=true
+switchTabsOnHover=false
 systemApplications=systemsettings.desktop,org.kde.kinfocenter.desktop
 
 [Containments][1][Applets][2][Configuration][Shortcuts]
@@ -43,6 +48,10 @@ plugin=org.kde.plasma.pager
 
 [Containments][1][Applets][3][Configuration]
 PreloadWeight=0
+
+[Containments][1][Applets][3][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][1][Applets][4]
 immutability=1
@@ -79,7 +88,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][1][Applets][7][Configuration]
-PreloadWeight=46
+PreloadWeight=19
 SystrayContainmentId=8
 
 [Containments][1][Applets][7][Configuration][Containments][8]
@@ -91,7 +100,7 @@ immutability=1
 plugin=org.kde.plasma.eventcalendar
 
 [Containments][1][Applets][71][Configuration]
-PreloadWeight=100
+PreloadWeight=68
 
 [Containments][1][Applets][71][Configuration][ConfigDialog]
 DialogHeight=779
@@ -107,8 +116,8 @@ clock_timeformat=ddd MMM dd h:mm ap
 timer_sfx_filepath=file:///home/nick/timer.ogg
 
 [Containments][1][Applets][71][Configuration][Google Calendar]
-access_token=ya29.GlsCBkL-SEQLjqv_ckNwtwKzDBlVx5-W8UWFhMPMz9KBscK8Ta4vvuEJmdqBOTE3cqUEXpw-8WsT31JQGdcq_lF9w4M0BGGAeejs1Za77NUPsgKRFKpyhGCl9_1H
-access_token_expires_at=1692946370
+access_token=ya29.GlwEBpif0ag-FADYMoAsroIuT28jiAzxtCNcARrnC5XJz6j-NyivuY8QSCu8lZH24yg2cnY6m8-01nj6y0btfY4H-jbLhq_5g5IepPArNh_H1hQeEXfA72tuIhHfpQ
+access_token_expires_at=1875802238
 access_token_type=Bearer
 calendar_id_list=sss955rd9afar5j5olne06lpf4@group.calendar.google.com,nicholashanoian@gmail.com
 calendar_list=W3sia2luZCI6ImNhbGVuZGFyI2NhbGVuZGFyTGlzdEVudHJ5IiwiZXRhZyI6IlwiMTUzMTIzMTE1NjIxMDAwMFwiIiwiaWQiOiJuaWNob2xhc2hhbm9pYW5AZ21haWwuY29tIiwic3VtbWFyeSI6Im5pY2hvbGFzaGFub2lhbkBnbWFpbC5jb20iLCJ0aW1lWm9uZSI6IkFtZXJpY2EvTmV3X1lvcmsiLCJjb2xvcklkIjoiMTUiLCJiYWNrZ3JvdW5kQ29sb3IiOiIjOWZjNmU3IiwiZm9yZWdyb3VuZENvbG9yIjoiIzAwMDAwMCIsInNlbGVjdGVkIjp0cnVlLCJhY2Nlc3NSb2xlIjoib3duZXIiLCJkZWZhdWx0UmVtaW5kZXJzIjpbeyJtZXRob2QiOiJlbWFpbCIsIm1pbnV0ZXMiOjEwfSx7Im1ldGhvZCI6InBvcHVwIiwibWludXRlcyI6MzB9XSwibm90aWZpY2F0aW9uU2V0dGluZ3MiOnsibm90aWZpY2F0aW9ucyI6W3sidHlwZSI6ImV2ZW50Q3JlYXRpb24iLCJtZXRob2QiOiJlbWFpbCJ9LHsidHlwZSI6ImV2ZW50Q2hhbmdlIiwibWV0aG9kIjoiZW1haWwifSx7InR5cGUiOiJldmVudENhbmNlbGxhdGlvbiIsIm1ldGhvZCI6ImVtYWlsIn0seyJ0eXBlIjoiZXZlbnRSZXNwb25zZSIsIm1ldGhvZCI6ImVtYWlsIn1dfSwicHJpbWFyeSI6dHJ1ZSwiY29uZmVyZW5jZVByb3BlcnRpZXMiOnsiYWxsb3dlZENvbmZlcmVuY2VTb2x1dGlvblR5cGVzIjpbImV2ZW50SGFuZ291dCJdfX0seyJraW5kIjoiY2FsZW5kYXIjY2FsZW5kYXJMaXN0RW50cnkiLCJldGFnIjoiXCIxNTMxMjgwMzYxMjA4MDAwXCIiLCJpZCI6InNzczk1NXJkOWFmYXI1ajVvbG5lMDZscGY0QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20iLCJzdW1tYXJ5IjoiRmFsbCAyMDE4IiwiZGVzY3JpcHRpb24iOiJVVk0gIC0gIEZhbGwgMjAxOCIsInRpbWVab25lIjoiQW1lcmljYS9OZXdfWW9yayIsImNvbG9ySWQiOiI4IiwiYmFja2dyb3VuZENvbG9yIjoiIzE2YTc2NSIsImZvcmVncm91bmRDb2xvciI6IiMwMDAwMDAiLCJzZWxlY3RlZCI6dHJ1ZSwiYWNjZXNzUm9sZSI6Im93bmVyIiwiZGVmYXVsdFJlbWluZGVycyI6W10sImNvbmZlcmVuY2VQcm9wZXJ0aWVzIjp7ImFsbG93ZWRDb25mZXJlbmNlU29sdXRpb25UeXBlcyI6WyJldmVudEhhbmdvdXQiXX19LHsia2luZCI6ImNhbGVuZGFyI2NhbGVuZGFyTGlzdEVudHJ5IiwiZXRhZyI6IlwiMTUzMTI0MDIwNDk1MzAwMFwiIiwiaWQiOiI5djFoZjU3M2h1czdudG5wY3NmZTZsbDhtYmdyNnZtZUBpbXBvcnQuY2FsZW5kYXIuZ29vZ2xlLmNvbSIsInN1bW1hcnkiOiJUYXNrcyBEdWUiLCJ0aW1lWm9uZSI6IlVUQyIsImNvbG9ySWQiOiIyMyIsImJhY2tncm91bmRDb2xvciI6IiNjZDc0ZTYiLCJmb3JlZ3JvdW5kQ29sb3IiOiIjMDAwMDAwIiwic2VsZWN0ZWQiOnRydWUsImFjY2Vzc1JvbGUiOiJyZWFkZXIiLCJkZWZhdWx0UmVtaW5kZXJzIjpbXSwiY29uZmVyZW5jZVByb3BlcnRpZXMiOnsiYWxsb3dlZENvbmZlcmVuY2VTb2x1dGlvblR5cGVzIjpbImV2ZW50SGFuZ291dCJdfX0seyJraW5kIjoiY2FsZW5kYXIjY2FsZW5kYXJMaXN0RW50cnkiLCJldGFnIjoiXCIxNTMxMjMxMTU2MjEwMDAwXCIiLCJpZCI6IiNjb250YWN0c0Bncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20iLCJzdW1tYXJ5IjoiQ29udGFjdHMiLCJ0aW1lWm9uZSI6IkFtZXJpY2EvTmV3X1lvcmsiLCJjb2xvcklkIjoiMTIiLCJiYWNrZ3JvdW5kQ29sb3IiOiIjZmFkMTY1IiwiZm9yZWdyb3VuZENvbG9yIjoiIzAwMDAwMCIsInNlbGVjdGVkIjp0cnVlLCJhY2Nlc3NSb2xlIjoicmVhZGVyIiwiZGVmYXVsdFJlbWluZGVycyI6W10sImNvbmZlcmVuY2VQcm9wZXJ0aWVzIjp7ImFsbG93ZWRDb25mZXJlbmNlU29sdXRpb25UeXBlcyI6WyJldmVudEhhbmdvdXQiXX19LHsia2luZCI6ImNhbGVuZGFyI2NhbGVuZGFyTGlzdEVudHJ5IiwiZXRhZyI6IlwiMTUzMTIzMTE1NjIxMDAwMFwiIiwiaWQiOiJlbi51c2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20iLCJzdW1tYXJ5IjoiSG9saWRheXMgaW4gVW5pdGVkIFN0YXRlcyIsInRpbWVab25lIjoiQW1lcmljYS9OZXdfWW9yayIsImNvbG9ySWQiOiIyIiwiYmFja2dyb3VuZENvbG9yIjoiI2QwNmI2NCIsImZvcmVncm91bmRDb2xvciI6IiMwMDAwMDAiLCJzZWxlY3RlZCI6dHJ1ZSwiYWNjZXNzUm9sZSI6InJlYWRlciIsImRlZmF1bHRSZW1pbmRlcnMiOltdLCJjb25mZXJlbmNlUHJvcGVydGllcyI6eyJhbGxvd2VkQ29uZmVyZW5jZVNvbHV0aW9uVHlwZXMiOlsiZXZlbnRIYW5nb3V0Il19fV0=
@@ -129,7 +138,7 @@ immutability=1
 plugin=org.kde.plasma.panelspacer
 
 [Containments][1][Applets][97][Configuration]
-PreloadWeight=42
+PreloadWeight=10
 
 [Containments][1][Applets][97][Configuration][General]
 expanding=false
@@ -199,7 +208,7 @@ immutability=1
 plugin=org.kde.plasma.systemmonitor.cpu
 
 [Containments][35][Applets][69][Configuration]
-PreloadWeight=18
+PreloadWeight=0
 
 [Containments][35][Applets][69][Configuration][ConfigDialog]
 DialogHeight=540
@@ -208,6 +217,9 @@ DialogWidth=720
 [Containments][35][Applets][69][Configuration][General]
 sources=cpu%2Fsystem%2FTotalLoad
 updateInterval=1000
+
+[Containments][35][Applets][98][Configuration][General]
+savedAt=2018,8,22,22,58,12
 
 [Containments][35][ConfigDialog]
 DialogHeight=660
@@ -283,7 +295,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][8][Applets][39][Configuration]
-PreloadWeight=6
+PreloadWeight=0
 
 [Containments][8][Applets][40]
 immutability=1
@@ -304,14 +316,14 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][8][Applets][42][Configuration]
-PreloadWeight=6
+PreloadWeight=0
 
 [Containments][8][Applets][43]
 immutability=1
 plugin=org.kde.plasma.printmanager
 
 [Containments][8][Applets][43][Configuration]
-PreloadWeight=0
+PreloadWeight=2
 
 [Containments][8][Applets][44]
 immutability=1
@@ -362,7 +374,7 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][89][Applets][90][Configuration]
-PreloadWeight=92
+PreloadWeight=60
 
 [Containments][89][Applets][90][Configuration][General]
 favoritesPortedToKAstats=true
@@ -372,31 +384,36 @@ immutability=1
 plugin=org.kde.plasma.pager
 
 [Containments][89][Applets][91][Configuration]
-PreloadWeight=42
+PreloadWeight=10
 
 [Containments][89][Applets][92]
 immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][89][Applets][92][Configuration]
-PreloadWeight=42
+PreloadWeight=10
+
+[Containments][89][Applets][92][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][89][Applets][92][Configuration][General]
 launchers=applications:chromium.desktop,applications:org.kde.konsole.desktop,applications:emacs.desktop,applications:systemsettings.desktop
+middleClickAction=NewInstance
 
 [Containments][89][Applets][93]
 immutability=1
 plugin=org.kde.plasma.showdesktop
 
 [Containments][89][Applets][93][Configuration]
-PreloadWeight=42
+PreloadWeight=10
 
 [Containments][89][Applets][94]
 immutability=1
 plugin=org.kde.plasma.eventcalendar
 
 [Containments][89][Applets][94][Configuration]
-PreloadWeight=52
+PreloadWeight=20
 
 [Containments][89][Applets][94][Configuration][ConfigDialog]
 DialogHeight=673
@@ -411,7 +428,7 @@ immutability=1
 plugin=org.kde.plasma.panelspacer
 
 [Containments][89][Applets][95][Configuration]
-PreloadWeight=42
+PreloadWeight=10
 
 [Containments][89][Applets][95][Configuration][General]
 expanding=false
@@ -422,7 +439,7 @@ immutability=1
 plugin=org.kde.plasma.panelspacer
 
 [Containments][89][Applets][96][Configuration]
-PreloadWeight=42
+PreloadWeight=10
 
 [Containments][89][Applets][96][Configuration][General]
 expanding=false
@@ -433,7 +450,7 @@ DialogHeight=84
 DialogWidth=1920
 
 [Containments][89][Configuration]
-PreloadWeight=42
+PreloadWeight=10
 
 [Containments][89][General]
 AppletOrder=90;91;92;93;95;94;96

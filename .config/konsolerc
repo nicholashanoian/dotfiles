@@ -3,8 +3,8 @@ ShowMenuBarByDefault=false
 
 [MainWindow]
 Height 1080=645
-Height 1440=645
+Height 1440=722
 MenuBar=Disabled
 State=AAAA/wAAAAD9AAAAAAAAA9sAAAKFAAAABAAAAAQAAAAIAAAACPwAAAAA
 Width 1920=987
-Width 2560=987
+Width 2560=1004

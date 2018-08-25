@@ -135,7 +135,7 @@ y
 **** Additional steps for Windows
 - Install [[https://github.com/Baggykiin/pass-winmenu][pass-winmenu]] (you want pass-winmenu-nogpg).
 - Install [[https://gnupg.org/download/index.html][gpg]] (you want normal gpg not gpg4win. this should be the second item down under "Windows").
-- =ssh-keygen= and add to [[gitlab.com]].
+- =ssh-keygen= and add to [[http://www.gitlab.com]].
 - Clone password repository into =C:\Users\<username>\.password-store=.
 - =C-M-p= to launch =pass-winmenu=.
 - =C-M-P= to auto-fill when in a browser.
@@ -172,4 +172,34 @@ source /usr/bin/virtualenvwrapper.sh
 - To activate an environment: ex: =workon py3=.
 - To make an environment: =mkvirtualenv py3=.
 - To deactivate an environment: =deactivate=.
+** SSH
+- Make a key with 
+#+BEGIN_SRC sh
+ssh-keygen
+#+END_SRC
+- Install public key with
+#+BEGIN_SRC sh
+ssh-copy-id user@host.com
+#+END_SRC
+- Create ssh shortcuts by editing =~/.ssh/config= on your local machine
+#+BEGIN_SRC conf-unix
+Host uvm
+     HostName w3.uvm.edu
+     User nhanoian
+#+END_SRC
+** rsync
+Upload the contents of localdir to projdir.
+#+BEGIN_SRC sh
+rsync -av localdir/ uvm:www-root/cs008/projdir
+#+END_SRC
+** Change modify date of a file
+Change the access and modify time of file to 2016 May 21 at 10:24:55.
 
+Format:
+#+BEGIN_EXAMPLE
+[[CC]YY]MMDDhhmm[.ss]
+#+END_EXAMPLE
+Usage:
+#+BEGIN_SRC sh
+touch -t 201605211024.55 file
+#+END_SRC
