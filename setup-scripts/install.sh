@@ -7,7 +7,6 @@ function config {
 }
 config checkout -f master
 config config status.showUntrackedFiles no
-~/$scriptsFolder/confirm-logout.sh
 ~/$scriptsFolder/oh-my-zsh.sh
 
 
