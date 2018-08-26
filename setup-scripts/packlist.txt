@@ -1,0 +1,17 @@
+emacs
+chromium
+xclip
+zsh
+yaourt
+unzip
+zip
+r
+aspell-en
+qpdfview
+highlight
+neofetch
+viewnior
+pass
+cmatrix
+xorg-xbacklight
+mlocate
