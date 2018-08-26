@@ -1,5 +1,5 @@
-$repoFolder="setup-repo"
-$scriptsFolder="setup-scripts"
+repoFolder="setup-repo"
+scriptsFolder="setup-scripts"
 
 git clone --bare https://github.com/nicholashanoian/dotfiles.git $HOME/$repoFolder/
 function config {
