@@ -8,7 +8,6 @@ function config {
 config checkout -f master
 config config status.showUntrackedFiles no
 ~/$scriptsFolder/confirm-logout.sh
-~/$scriptsFolder/pacman.sh
-~/$scriptsFolder/yaourt.sh
-~/$scriptsFolder/venv.sh
 ~/$scriptsFolder/oh-my-zsh.sh
+
+
