@@ -91,6 +91,11 @@ However, sometimes this does not properly add the boot loader. With Windows, use
 
 ** Fonts
 Edit =.config/fontconfig/fonts.conf=
+** High DPI
+Chromium: create =~/.config/chromium-flags.conf=
+#+BEGIN_SRC conf-unix
+--force-device-scale-factor=1.25
+#+END_SRC
 ** Mathematica
 *** Registration
 #+BEGIN_SRC sh
