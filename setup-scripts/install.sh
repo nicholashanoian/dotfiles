@@ -1,7 +1,7 @@
 repoFolder="setup-repo"
 scriptsFolder="setup-scripts"
 
-git clone --bare https://github.com/nicholashanoian/dotfiles.git $HOME/$repoFolder/
+git clone --bare https://github.com/nicholashanoian/dotfiles.git $HOME/$repoFolder
 function config {
 	/usr/bin/git --git-dir=$HOME/$repoFolder/ --work-tree=$HOME $@
 }
