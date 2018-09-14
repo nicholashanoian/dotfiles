@@ -208,3 +208,128 @@ Usage:
 #+BEGIN_SRC sh
 touch -t 201605211024.55 file
 #+END_SRC
+** Razer Blade Stealth Suspend
+- Absolute pain to get this to work
+- Only seems to work on linux-4.9 kernel
+- Doesn't seem to work on:
+| 4.14 |
+| 4.16 |
+| 4.18 |
+
+*** =/etc/default/grub=
+  - Need to change =GRUB_CMDLINE_LINUX_DEFAULT=. Also =GRUB_DEFAULT= to run a different kernel by default. See [[https://unix.stackexchange.com/questions/198003/set-default-kernel-in-grub]].
+#+BEGIN_SRC conf-unix
+# GRUB_DEFAULT=saved
+GRUB_DEFAULT="gnulinux-advanced-c80f0c99-2eeb-4397-8854-ef7948e2ebfd>gnulinux-4.9.126-1-MANJARO x64-advanced-c80f0c99-2eeb-4397-8854-ef7948e2ebfd"
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR='Manjaro'
+GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=/dev/nvme0n1p5 button.lid_init_state=open"
+GRUB_CMDLINE_LINUX=""
+
+# If you want to enable the save default function, uncomment the following
+# line, and set GRUB_DEFAULT to saved.
+GRUB_SAVEDEFAULT=true
+
+# Preload both GPT and MBR modules so that they are not missed
+GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+
+# Uncomment to enable booting from LUKS encrypted devices
+#GRUB_ENABLE_CRYPTODISK=y
+
+# Uncomment to enable Hidden Menu, and optionally hide the timeout count
+#GRUB_HIDDEN_TIMEOUT=5
+#GRUB_HIDDEN_TIMEOUT_QUIET=true
+
+# Uncomment to use basic console
+GRUB_TERMINAL_INPUT=console
+
+# Uncomment to disable graphical terminal
+#GRUB_TERMINAL_OUTPUT=console
+
+# The resolution used on graphical terminal
+# note that you can use only modes which your graphic card supports via VBE
+# you can see them in real GRUB with the command `vbeinfo'
+GRUB_GFXMODE=auto
+
+# Uncomment to allow the kernel use the same resolution used by grub
+GRUB_GFXPAYLOAD_LINUX=keep
+
+# Uncomment if you want GRUB to pass to the Linux kernel the old parameter
+# format "root=/dev/xxx" instead of "root=/dev/disk/by-uuid/xxx"
+#GRUB_DISABLE_LINUX_UUID=true
+
+# Uncomment to disable generation of recovery mode menu entries
+GRUB_DISABLE_RECOVERY=true
+
+# Uncomment and set to the desired menu colors.  Used by normal and wallpaper
+# modes only.  Entries specified as foreground/background.
+GRUB_COLOR_NORMAL="light-gray/black"
+GRUB_COLOR_HIGHLIGHT="green/black"
+
+# Uncomment one of them for the gfx desired, a image background or a gfxtheme
+GRUB_BACKGROUND="/usr/share/grub/background.png"
+#GRUB_THEME="/path/to/gfxtheme"
+
+# Uncomment to get a beep at GRUB start
+#GRUB_INIT_TUNE="480 440 1"
+
+#+END_SRC
+
+*** =/etc/systemd/logind.conf=
+- Uncomment lid switch stuff
+#+BEGIN_SRC conf-unix
+  #  This file is part of systemd.
+  #
+  #  systemd is free software; you can redistribute it and/or modify it
+  #  under the terms of the GNU Lesser General Public License as published by
+  #  the Free Software Foundation; either version 2.1 of the License, or
+  #  (at your option) any later version.
+  #
+  # Entries in this file show the compile time defaults.
+  # You can change settings by editing this file.
+  # Defaults can be restored by simply deleting this file.
+  #
+  # See logind.conf(5) for details.
+
+  [Login]
+  #NAutoVTs=6
+  #ReserveVT=6
+  #KillUserProcesses=no
+  #KillOnlyUsers=
+  #KillExcludeUsers=root
+  #InhibitDelayMaxSec=5
+  #HandlePowerKey=poweroff
+  # HandleSuspendKey=suspend
+  # HandleHibernateKey=suspend
+
+  HandleLidSwitch=suspend
+  # HandleLidSwitch=ignore
+
+  HandleLidSwitchExternalPower=suspend
+
+  HandleLidSwitchDocked=suspend
+  # HandleLidSwitchDocked=ignore
+
+  #PowerKeyIgnoreInhibited=no
+  #SuspendKeyIgnoreInhibited=no
+  #HibernateKeyIgnoreInhibited=no
+  #LidSwitchIgnoreInhibited=yes
+  #HoldoffTimeoutSec=30s
+  #IdleAction=ignore
+  #IdleActionSec=30min
+  #RuntimeDirectorySize=10%
+  #RemoveIPC=yes
+  #InhibitorsMax=8192
+  #SessionsMax=8192
+
+#+END_SRC
+
+*** KDE System Settings
+- Energy Saving > On AC Power, On Battery, On Low Battery
+  - Check Button events handling > When laptop lid closed: Suspend
+  - Leave Even when an external monitor is connected unchecked
+  - When power button pressed: prompt log out dialog
+- Activity Settings > Use separate settings (advanced users only)
+  - Check Button events handling > When laptop lid closed: Suspend
+  - Leave Even when an external monitor is connected unchecked
+  - When power button pressed: do nothing 
