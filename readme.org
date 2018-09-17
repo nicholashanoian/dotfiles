@@ -208,7 +208,6 @@ Usage:
 #+BEGIN_SRC sh
 touch -t 201605211024.55 file
 #+END_SRC
-<<<<<<< Updated upstream
 ** Razer Blade Stealth Suspend
 - Absolute pain to get this to work
 - Only seems to work on linux-4.9 kernel
@@ -216,7 +215,11 @@ touch -t 201605211024.55 file
 | 4.14 |
 | 4.16 |
 | 4.18 |
-
+*** =mkinitcpio=
+To generate a new boot image for a kernel
+#+BEGIN_SRC sh
+mkinitcpio -p linux49
+#+END_SRC
 *** =/etc/default/grub=
   - Need to change =GRUB_CMDLINE_LINUX_DEFAULT=. Also =GRUB_DEFAULT= to run a different kernel by default. See [[https://unix.stackexchange.com/questions/198003/set-default-kernel-in-grub]].
 #+BEGIN_SRC conf-unix
