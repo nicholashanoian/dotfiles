@@ -208,6 +208,7 @@ Usage:
 #+BEGIN_SRC sh
 touch -t 201605211024.55 file
 #+END_SRC
+<<<<<<< Updated upstream
 ** Razer Blade Stealth Suspend
 - Absolute pain to get this to work
 - Only seems to work on linux-4.9 kernel
@@ -333,3 +334,7 @@ GRUB_BACKGROUND="/usr/share/grub/background.png"
   - Check Button events handling > When laptop lid closed: Suspend
   - Leave Even when an external monitor is connected unchecked
   - When power button pressed: do nothing 
+=======
+** To fill out PDFs
+Use =xournal=
+
