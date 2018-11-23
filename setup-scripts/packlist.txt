@@ -16,3 +16,8 @@ cmatrix
 xorg-xbacklight
 mlocate
 texlive-most
+xev
+biber
+npm
+ruby-sass
+java-openjfx

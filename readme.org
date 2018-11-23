@@ -103,6 +103,11 @@ math
 #+END_SRC
 *** Startup Issues
 [[https://forums.gentoo.org/viewtopic-p-8198000.html?sid=ab27c1ca8e1927691858595185e18284]]
+#+BEGIN_SRC sh
+sudo mv /usr/local/Wolfram/Mathematica/11.3/SystemFiles/Libraries/Linux-x86-64/libfreetype.so.6 /usr/local/Wolfram/Mathematica/11.3/SystemFiles/Libraries/Linux-x86-64/libfreetype.so.6.bak
+
+sudo mv /usr/local/Wolfram/Mathematica/11.3/SystemFiles/Libraries/Linux-x86-64/libz.so.1 /usr/local/Wolfram/Mathematica/11.3/SystemFiles/Libraries/Linux-x86-64/libz.so.1.bak
+#+END_SRC
 *** Fix magnification
 #+BEGIN_SRC
 SetOptions[$FrontEnd, Magnification -> 1.25]
@@ -113,6 +118,16 @@ SetOptions[$FrontEnd, Magnification -> 1.25]
 - Deadline :: persists past due date whether todo or no todo state
 ** Pacman
 - Remove orphan packages by using =pacman -Rns $(pacman -Qtdq)=.
+- List by install date:
+#+BEGIN_SRC sh
+for i in $(pacman -Qq)
+do
+  grep "\[ALPM\] installed $i" /var/log/pacman.log
+done | \
+  sort -u | \
+  sed -e 's/\[ALPM\] installed //' -e 's/(.*$//'
+#+END_SRC
+
 ** Pass and GPG
 *** Create a new key
 #+BEGIN_SRC sh
