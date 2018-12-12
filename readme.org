@@ -103,6 +103,13 @@ math
 #+END_SRC
 *** Startup Issues
 [[https://forums.gentoo.org/viewtopic-p-8198000.html?sid=ab27c1ca8e1927691858595185e18284]]
+Move font files:
+#+BEGIN_SRC sh
+mathdir="/usr/local/Wolfram/Mathematica/11.3/SystemFiles/Libraries/Linux-x86-64/"
+sudo mv $mathdir/libfreetype.so.6 $mathdir/libfreetype.so.6.bak
+sudo mv $mathdir/libz.so.1 $mathdir/libz.so.1.bak
+#+END_SRC
+
 *** Fix magnification
 #+BEGIN_SRC
 SetOptions[$FrontEnd, Magnification -> 1.25]

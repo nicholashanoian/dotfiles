@@ -135,3 +135,8 @@ then
 	unfunction preexec
 	PS1='$ '
 fi
+
+# no ctrl-s
+stty -ixon
+
+alias prp="pipenv run python"
