@@ -120,6 +120,16 @@ SetOptions[$FrontEnd, Magnification -> 1.25]
 - Deadline :: persists past due date whether todo or no todo state
 ** Pacman
 - Remove orphan packages by using =pacman -Rns $(pacman -Qtdq)=.
+- List by install date:
+#+BEGIN_SRC sh
+for i in $(pacman -Qq)
+do
+  grep "\[ALPM\] installed $i" /var/log/pacman.log
+done | \
+  sort -u | \
+  sed -e 's/\[ALPM\] installed //' -e 's/(.*$//'
+#+END_SRC
+
 ** Pass and GPG
 *** Create a new key
 #+BEGIN_SRC sh
@@ -222,6 +232,11 @@ touch -t 201605211024.55 file
 | 4.14 |
 | 4.16 |
 | 4.18 |
+- To make boot image for a kernel (for linux 4.9):
+#+BEGIN_SRC sh
+sudo mkinitcpio -p linux49 
+#+END_SRC
+
 *** =mkinitcpio=
 To generate a new boot image for a kernel
 #+BEGIN_SRC sh
@@ -344,7 +359,16 @@ GRUB_BACKGROUND="/usr/share/grub/background.png"
   - Check Button events handling > When laptop lid closed: Suspend
   - Leave Even when an external monitor is connected unchecked
   - When power button pressed: do nothing 
-=======
+** PDF resize and compilation
+To compile individual PDFs into one document
+#+BEGIN_SRC sh
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=output.pdf input1.pdf input2.pdf input3.pdf
+#+END_SRC
+
+To resize a PDF document
+#+BEGIN_SRC sh
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf
+#+END_SRC
+
 ** To fill out PDFs
 Use =xournal=
-

@@ -104,7 +104,7 @@ alias ed="emacs --daemon"
 export EDITOR="emacsclient -t"
 export VISUAL="emacsclient -c -a emacs"
 
-export PATH=$PATH:/home/nick/.local/bin
+export PATH=$PATH:/home/nick/.local/bin:/home/nick/dropbox/bin
 
 
 # virtualenvwrapper
